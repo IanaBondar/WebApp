@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/reset.css">
+    <link rel="stylesheet" href="style/auth.css">
+    <!--<script src="script/modal_window.js"></script>-->
+    <!--<script src="script/main.js"></script>-->
+    <script src="script/auth.js"></script>
+    <title>Bondar</title>
+</head>
+<body>
+    <div class="header">
+        <a href=""><img src="images/icons/table-purple.png" alt="table" class="header-icon"> </a>
+    </div>
+    <div id="modal" class="modal__window">
+        <div class="modal__window-content">
+            <p id="modal__window-text" class="modal__window-text">            
+            </p>
+            <p class="modal__window-hint">
+                Нажми в любое место для продолжения
+            </p>
+        </div>
+    </div>
+    <div class="container">
+        <h1 class="auth_header">Регистрация</h1>
+        <form class="registration" >
+            <ul class="registration__list">
+                <li class="registration__list-item">
+                    <img src="images/icons/user.svg" class="input-icon" alt=""><input class="registration-input" type="text" id="name" placeholder="имя">
+                </li>
+                <li class="registration__list-item">
+                    <img src="images/icons/email.svg" class="input-icon" alt=""><input class="registration-input" type="email" id="email" placeholder="почта">
+                </li>
+                <li class="registration__list-item">
+                    <img src="images/icons/key.svg" class="input-icon" alt=""><input class="registration-input" type="password" id="password" placeholder="пароль">
+                </li>
+                <li class="registration__list-item">
+                    <img src="images/icons/key.svg" class="input-icon" alt=""><input class="registration-input" type="password" id="confirm-password" placeholder="подтвердите пароль">
+                </li>
+            </ul>
+            <input type="submit" class="submit-btn" value="Зарегистрироваться" onclick="validateForm(event)">
+            <p class="question">Уже есть аккаунт? <a href="signing.html" class="signin-link">Войти</a></p>
+            <div id="errorMessage"></div>
+        </form>
+
+    </div>
+    <div class="bottom__menu">
+        <ul class="bottom__menu-list">
+            <li><a href=""><img src="images/bottom-menu/menu.svg" alt="" class="bottom__menu-list-icon" id="menu" ></a></li>
+            <li><a href=""><img src="images/bottom-menu/calendar.svg" alt="" class="bottom__menu-list-icon" id="calendar"></a></li>
+            <li><a href=""><img src="images/bottom-menu/bot.svg" alt="" class="bottom__menu-list-icon" id="bot"></a></li>
+            <li><a href=""><img src="images/bottom-menu/profile.svg" alt="" class="bottom__menu-list-icon" id="profile"></a></li>
+            <li><a href=""><img src="images/bottom-menu/phone.svg" alt="" class="bottom__menu-list-icon" id="phone"></a></li>
+        </ul>
+    </div>
+</body>
+</html>

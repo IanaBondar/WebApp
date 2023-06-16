@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/reset.css">
+    <link rel="stylesheet" href="style/contacts.css">
+    <script src="script/contacts.js"></script>
+    <script src="script/main.js"></script>
+    <title>Bondar</title>
+</head>
+<body>
+    <div class="header">
+        <a href="emotinal_table.html"><img src="images/icons/table-purple.png" alt="table" class="header-icon"> </a>
+        <p>Полезные номера</p>
+        <a></a>
+    </div>
+
+    <div id="modal" class="modal__window">
+        <div class="modal__window-content">
+            <p id="modal__window-text" class="modal__window-text">            
+            </p>
+            <p class="modal__window-hint">
+                Нажми в любое место для продолжения
+            </p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1 class="contact-text">
+            Номера, которые могут тебе пригодиться
+        </h1>
+        <div class="contacts">
+
+            <div class="contact__wrapper">
+                <p id="contact__wrapper-number">8 800 2000 122</p>
+                <button onclick="copyStringToClipboard()"> <img src="images/icons/copy.svg" alt="copy"></button>
+                <p id="copy1"></p>
+            </div>
+            <p class="contact__description">
+                Поговорите со специалистами 
+                и вам обязательно помогут.
+                Единый общероссийский телефон доверия.
+            </p>
+
+            <div class="contact__wrapper">
+                <p id="contact__wrapper-number2">103</p>
+                <button onclick="copyStringToClipboard2()"> <img src="images/icons/copy.svg" alt="copy"></button>
+                <p id="copy2"></p>
+            </div>
+            <p class="contact__description">
+                Скорая помощь
+            </p>
+
+        </div>   
+    </div>
+    <div class="bottom__menu">
+        <ul class="bottom__menu-list">
+            <li><a href="courses.html"><img src="images/bottom-menu/menu.svg" alt="" class="bottom__menu-list-icon"></a></li>
+            <li><a href="diary.html"><img src="images/bottom-menu/calendar.svg" alt="" class="bottom__menu-list-icon"></a></li>
+            <li><a href="bot.html"><img src="images/bottom-menu/bot.svg" alt="" class="bottom__menu-list-icon"></a></li>
+            <li><a href="auth.html"><img src="images/bottom-menu/profile.svg" alt="" class="bottom__menu-list-icon"></a></li>
+            <li><a href=""><img src="images/bottom-menu/phone-purple.svg" alt="" class="bottom__menu-list-icon"></a></li>
+        </ul>
+    </div>
+</body>
+</html>
