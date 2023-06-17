@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style/main.css">
+  <link rel="stylesheet" href="style/reset.css">
+  <link rel="stylesheet" href="style/diary-days.css">
+  <!--<script src="script/diary-days.js"></script>-->
+  <script src="script/main.js"></script>
+  <title>Bondar</title>
+</head>
+<body>
+<div class="header">
+  <a href="emotinal_table.html"><img src="images/icons/table-purple.png" alt="table" class="header-icon"> </a>
+  <p>Мои благодарности</p>
+  <a></a>
+</div>
+<div class="container">
+  <div class="day" onclick="window.location.href='day.html'">
+    <div class="inner-day">
+      <h2>День 1</h2>
+    </div>
+  </div>
+  <div class="day" onclick="window.location.href='day.html'">
+    <div class="inner-day">
+      <h2>День 2</h2>
+    </div>
+  </div>
+  <div class="day" onclick="window.location.href='day.html'">
+    <div class="inner-day">
+      <h2>День 3</h2>
+    </div>
+  </div>
+  <div class="day" onclick="window.location.href='day.html'">
+    <div class="inner-day">
+      <h2>День 4</h2>
+    </div>
+  </div>
+  <div class="day" onclick="window.location.href='day.html'">
+    <div class="inner-day">
+      <h2>День 5</h2>
+    </div>
+  </div>
+  <div class="day" onclick="window.location.href='day.html'">
+    <div class="inner-day">
+      <h2>День 6</h2>
+    </div>
+  </div>
+  <div class="day" onclick="window.location.href='day.html'">
+    <div class="inner-day">
+      <h2>День 7</h2>
+    </div>
+  </div>
+  <div class="day" onclick="window.location.href='day.html'">
+    <div class="inner-day">
+      <h2>День 8</h2>
+    </div>
+  </div>
+  <div class="addDay" id="addDay">
+    <h2>+</h2>
+  </div>
+
+</div>
+<div class="space"></div>
+<div class="bottom__menu">
+  <ul class="bottom__menu-list">
+    <li><a href="diary.html"><img src="images/icons/arrow.svg" alt="" class="bottom__menu-list-icon"></a></li>
+  </ul>
+</div>
+<script>
+  const addDayButton = document.getElementById('addDay');
+  addDayButton.addEventListener('click', function() {
+    const container = document.querySelector('.container');
+    const newDay = document.createElement('div');
+    newDay.classList.add('inner-day');
+    newDay.innerHTML = `
+    <h2>День ${container.children.length}</h2>
+  `;
+    const newDiv = document.createElement('div');
+    newDiv.classList.add('day');
+    newDiv.addEventListener('click', function toDay(event){ window.location.href="day.html"; });
+    newDiv.appendChild(newDay);
+
+    container.insertBefore(newDiv, addDayButton);
+  });
+</script>
+</body>
+</html>

@@ -6,9 +6,8 @@
     <link rel="stylesheet" href="style/main.css">
     <link rel="stylesheet" href="style/reset.css">
     <link rel="stylesheet" href="style/bot.css">
-    <script src="script/bot_simulation.js"></script>
-    <!--<script src="/script/modal_window.js"></script>-->
-    <!--<script src="script/main.js"></script>-->
+    <!--<script src="script/bot_simulation.js"></script>-->
+    <script src="script/main.js"></script>
     <title>Bondar</title>
 </head>
 <body>
@@ -18,37 +17,155 @@
         <a></a>
     </div>
 
-    <!--<div id="modal" class="modal__window">
-        <div class="modal__window-content">
-            <p id="modal__window-text" class="modal__window-text">            
-            </p>
-            <p class="modal__window-hint">
-                Нажми в любое место для продолжения
-            </p>
-        </div>
-    </div>-->
 
     <div class="container">
-        <div class="dialog-container">
-            <div id="dialog" class="dialog">
-                
+        <div class="dialog-container" >
+            <div id="dialog">
+
             </div>
         </div>
         <form action="" id="send__message-form" class="send__message-form">
             <input type="text" id="message-input" autocomplete="off" class="message-input" placeholder="Введите текст">
-            <button type="submit" class="icon-btn" id="send__message-btn">
+            <button class="icon-btn" id="send__message-btn" >
                 <img src="images/icons/submit.png" alt="">
             </button>
         </form>
     </div>
+
+
     <div class="bottom__menu">
         <ul class="bottom__menu-list">
             <li><a href="courses.html"><img src="images/bottom-menu/menu.svg" alt="" class="bottom__menu-list-icon"></a></li>
             <li><a href="diary.html"><img src="images/bottom-menu/calendar.svg" alt="" class="bottom__menu-list-icon"></a></li>
             <li><a href=""><img src="images/bottom-menu/bot-purple.svg" alt="" class="bottom__menu-list-icon"></a></li>
-            <li><a href="auth.html"><img src="images/bottom-menu/profile.svg" alt="" class="bottom__menu-list-icon"></a></li>
+            <li><a href="profile.html"><img src="images/bottom-menu/profile.svg" alt="" class="bottom__menu-list-icon"></a></li>
             <li><a href="contacts.html"><img src="images/bottom-menu/phone.svg" alt="" class="bottom__menu-list-icon"></a></li>
         </ul>
     </div>
+    <script>
+        function scrollToBottom() {
+            let lastChild = dialog.lastElementChild;
+            lastChild.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        }
+
+        const dialog = document.getElementById('dialog');
+        const chatInput = document.getElementById('message-input');
+        const chatSubmit = document.getElementById('send__message-btn');
+        const questions = [
+            {
+                question: 'И снова привет, Яна! Рад тебя выслушать.'
+            },
+            {
+                question: 'Как твое самочувствие?',
+                answers: [
+                    'Ужасно',
+                    'Нормально',
+                    'Отлично'
+                ],
+                botanswers:[
+                    'Это  больно слышать.', 'Внушает уверенность. Ты со всем справишься!', 'Рад это слышать! Так держать!'
+                ]
+            },
+            {
+                question: 'Опишите, пожалуйста, что вас беспокоит?'
+
+            },
+            {
+                question: 'Насколько сильно то чувство, что вы испытываете?',
+                answers: [
+                    '1','2','3','4','5'
+                ],
+                botanswers:[
+                    'Мне очень жаль слышать, что вы так себя чувствуете. Я очень надеюсь, что помогу вам справиться с этим состоянием.',
+                    'Мне очень жаль слышать, что вы так себя чувствуете. Я очень надеюсь, что помогу вам справиться с этим состоянием.',
+                    'Мне очень жаль слышать, что вы так себя чувствуете. Я очень надеюсь, что помогу вам справиться с этим состоянием.',
+                    'Мне очень жаль слышать, что вы так себя чувствуете. Я очень надеюсь, что помогу вам справиться с этим состоянием.',
+                    'Мне очень жаль слышать, что вы так себя чувствуете. Я очень надеюсь, что помогу вам справиться с этим состоянием.'
+                ]
+            },
+            {
+                question: 'Хотите начать нашу первую сессию? Уверен, что среди моих уроков обязательно окажутся полезные вам темы.',
+                answers: ['Начать сессию', 'Нет, спасибо'],
+                botanswers:[
+                    'Супер, начинаем!', 'Хорошо, увидимся в другой раз!'
+                ]
+            }
+        ];
+
+
+        let currentQuestionIndex = 0;
+
+        function showBotMessage(message) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message', 'incoming');
+            const textElement = document.createElement('p');
+            textElement.textContent = message;
+            messageElement.appendChild(textElement);
+            dialog.appendChild(messageElement);
+
+
+
+
+        }
+
+        function showUserMessage(message) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message', 'outgoing');
+            const textElement = document.createElement('p');
+            textElement.textContent = message;
+            messageElement.appendChild(textElement);
+            dialog.appendChild(messageElement);
+
+
+        }
+
+        function askQuestion() {
+            let question = questions[currentQuestionIndex];
+            showBotMessage(question.question);
+            if (currentQuestionIndex===0) {currentQuestionIndex=1;
+                question = questions[currentQuestionIndex];
+                showBotMessage(question.question);}
+            for (let i = 0; i < question.answers.length; i++) {
+                showBotMessage(`${i + 1}. ${question.answers[i]}`);
+            }
+
+
+        }
+
+
+        function handleUserResponse() {
+            const userResponse = chatInput.value;
+            showUserMessage(userResponse);
+            chatInput.value = '';
+            if (currentQuestionIndex===2){
+                currentQuestionIndex++;
+                askQuestion();
+            }
+            const question = questions[currentQuestionIndex];
+            const answerIndex = parseInt(userResponse) - 1;
+            if (!isNaN(answerIndex) && answerIndex >= 0 && answerIndex < question.answers.length) {
+                const answer = question.botanswers[answerIndex];
+                showBotMessage(answer);
+                if (currentQuestionIndex === 1 && answerIndex === 2){
+                    currentQuestionIndex+=2;
+                }
+                currentQuestionIndex++;
+                if (currentQuestionIndex < questions.length) {
+                    askQuestion();
+                } else {
+                    showBotMessage('Спасибо за ответы!');
+                    chatInput.disabled = true;
+                    chatSubmit.disabled = true;
+                }
+            } else {
+                showBotMessage('Пожалуйста, выберите ответ, нажав соответствующую цифру');
+            }
+        }
+
+
+        chatSubmit.addEventListener('click', handleUserResponse);
+        askQuestion()
+    </script>
 </body>
+
 </html>
