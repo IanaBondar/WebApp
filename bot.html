@@ -102,8 +102,13 @@
             textElement.textContent = message;
             messageElement.appendChild(textElement);
             dialog.appendChild(messageElement);
-
-
+            /*const img = document.createElement('img');
+            img.src="images/icons/bot-black.svg";
+            const child = document.createElement('div');
+            child.appendChild(img);
+            child.appendChild(messageElement);
+            dialog.appendChild(child);*/
+            scrollToBottom();
 
 
 
@@ -117,6 +122,8 @@
             messageElement.appendChild(textElement);
             dialog.appendChild(messageElement);
 
+            event.preventDefault();
+            scrollToBottom();
         }
 
         function askQuestion() {
